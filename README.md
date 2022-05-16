@@ -1,3 +1,3 @@
 # cubeos-dev
 
-docker run -it -v "$PWD":/usr/cuavadev/ -w /usr/cuavadev/hsi_repositories cuava/kubos-dev:latest bash
+docker run -it -v "$PWD":/usr/cubeos/ -w /usr/cubeos/ cubeos-dev bash
