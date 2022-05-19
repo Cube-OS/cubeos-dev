@@ -9,3 +9,8 @@
 
 ## Run Docker
 `docker run -it -v "$PWD":/usr/cubeos/ -w /usr/cubeos/ cubeos-dev bash`
+
+## to access a running Docker
+`docker ps`
+
+`docker exec -it <container name> /bin/bash`
