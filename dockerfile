@@ -19,6 +19,7 @@ RUN apt-get -y upgrade
 # Install a new package, without unnecessary recommended packages:
 RUN apt-get install --no-install-recommends -f -y pkg-config build-essential git cmake unzip wget sqlite3 libsqlite3-dev libssl-dev curl git ssh 
 RUN apt-get install --no-install-recommends -f -y bc cpio ncurses-dev libc6-i386 lib32stdc++6 lib32z1
+RUN apt-get update && apt-get install file rsync && apt install python
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -f -y doxygen graphviz plantuml file rsync python3.10
 
 # Delete cached files we don't need anymore:
