@@ -1,6 +1,3 @@
-# syntax=docker/dockerfile:experimental
-# cuava/kubos-dev:1.17.1
-#FROM rust:1.36
 FROM ubuntu:18.04
 
 RUN sed -E -i 's#http://archive.ubuntu.com/ubuntu/#mirror://mirrors.ubuntu.com/mirrors.txt#g' /etc/apt/sources.list
@@ -28,8 +25,8 @@ RUN rm -rf /var/lib/apt/lists/*
 
 #Kubos Linux setup
 RUN echo "Installing Kubos Linux Toolchain"
-RUN wget https://github.com/Cube-OS/toolchains/releases/download/0.2/iobc-toolchain-0.2.tar.gz -O ./iobc_toolchain.tar.gz && mkdir /usr/bin/iobc_toolchain && tar -xf ./iobc_toolchain.tar.gz --strip 1 -C /usr/bin/iobc_toolchain && rm ./iobc_toolchain.tar.gz
-RUN wget https://github.com/Cube-OS/toolchains/releases/download/0.2/bbb-toolchain-0.2.tar.gz -O ./bbb_toolchain.tar.gz && mkdir /usr/bin/bbb_toolchain && tar -xf ./bbb_toolchain.tar.gz --strip 1 -C /usr/bin/bbb_toolchain && rm ./bbb_toolchain.tar.gz
+RUN wget https://github.com/Cube-OS/toolchains/releases/download/0.1/iobc-toolchain-0.1.tar.gz -O ./iobc_toolchain.tar.gz && mkdir /usr/bin/iobc_toolchain && tar -xf ./iobc_toolchain.tar.gz --strip 1 -C /usr/bin/iobc_toolchain && rm ./iobc_toolchain.tar.gz
+RUN wget https://github.com/Cube-OS/toolchains/releases/download/0.1/bbb-toolchain-0.1.tar.gz -O ./bbb_toolchain.tar.gz && mkdir /usr/bin/bbb_toolchain && tar -xf ./bbb_toolchain.tar.gz --strip 1 -C /usr/bin/bbb_toolchain && rm ./bbb_toolchain.tar.gz
 
 # Setup rust stuff
 ENV PATH "$PATH:/root/.cargo/bin"
