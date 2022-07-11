@@ -30,7 +30,7 @@ RUN wget https://github.com/Cube-OS/toolchains/releases/download/0.1/bbb-toolcha
 # Setup rust stuff
 ENV PATH "$PATH:/root/.cargo/bin"
 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain 1.55.0 -t armv5te-unknown-linux-gnueabi arm-unknown-linux-gnueabihf -c clippy rustfmt && rustup toolchain uninstall stable-x86_64-unknown-linux-gnu
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain 1.61.0 -t armv5te-unknown-linux-gnueabi arm-unknown-linux-gnueabihf -c clippy rustfmt && rustup toolchain uninstall stable-x86_64-unknown-linux-gnu
 
 RUN cargo install --git https://github.com/kubos/cargo-kubos
 COPY cargo_config /root/.cargo/config
