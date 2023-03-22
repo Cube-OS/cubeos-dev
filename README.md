@@ -17,6 +17,13 @@ and allows cross-compilation for the ISIS iOBC and BeagleBone Black.
 ## Run Docker
 `docker run -it -v "$PWD":/usr/cubeos/ -w /usr/cubeos/ cubeos-dev bash`
 
+### Use with ssh-authentication
+#### MacOS
+`docker run -it -v "$PWD":/usr/cubeos -v /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock:ro -e SSH_AUTH_SOCK="/run/host-services/ssh-auth.sock" -w /usr/cubeos cubeos-dev bash`
+
+#### WSL
+`docker run -it -v "$PWD":/usr/cubeos/ -v $SSH_AUTH_SOCK:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent -w /usr/cubeos cubeos-dev bash`
+
 ## to access a running Docker
 `docker ps`
 
