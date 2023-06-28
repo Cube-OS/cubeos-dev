@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 RUN sed -E -i 's#http://archive.ubuntu.com/ubuntu/#mirror://mirrors.ubuntu.com/mirrors.txt#g' /etc/apt/sources.list
 RUN echo "Ubuntu Update and dependency install"
@@ -32,7 +32,7 @@ RUN wget https://github.com/Cube-OS/toolchains/releases/download/0.1/bbb-toolcha
 # Setup rust stuff
 ENV PATH "$PATH:/root/.cargo/bin"
 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain 1.63.0 -t armv5te-unknown-linux-gnueabi arm-unknown-linux-gnueabihf -c clippy rustfmt && rustup toolchain uninstall stable-x86_64-unknown-linux-gnu
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain 1.67.1 -t armv5te-unknown-linux-gnueabi arm-unknown-linux-gnueabihf -c clippy rustfmt && rustup toolchain uninstall stable-x86_64-unknown-linux-gnu
 
 RUN cargo install --git https://github.com/kubos/cargo-kubos
 COPY cargo_config /root/.cargo/config
