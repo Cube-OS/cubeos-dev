@@ -28,3 +28,13 @@ and allows cross-compilation for the ISIS iOBC and BeagleBone Black.
 `docker ps`
 
 `docker exec -it <container name> /bin/bash`
+
+## IMPORTANT
+add the targets to your .cargo/config file in your $HOME directory
+```
+[target.armv5te-unknown-linux-gnueabi]
+linker = "/usr/bin/iobc_toolchain/usr/bin/arm-linux-gcc"
+
+[target.arm-unknown-linux-gnueabihf]
+linker = "/usr/bin/bbb_toolchain/usr/bin/arm-linux-gcc"
+```
