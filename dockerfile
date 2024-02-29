@@ -46,7 +46,7 @@ RUN echo "Installing Kubos Linux Toolchain" && \
 # Setup Rust environment:
 ENV PATH "$PATH:/root/.cargo/bin"
 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain 1.70.0 -t armv5te-unknown-linux-gnueabi arm-unknown-linux-gnueabihf -c clippy rustfmt && \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain 1.76.0 -t armv5te-unknown-linux-gnueabi arm-unknown-linux-gnueabihf -c clippy rustfmt && \
     rustup toolchain uninstall stable-x86_64-unknown-linux-gnu
 
 RUN cargo install --git https://github.com/kubos/cargo-kubos
