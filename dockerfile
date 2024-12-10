@@ -21,13 +21,12 @@ RUN TZ=Australia/Sydney && \
     libssl-dev curl git ssh bc cpio ncurses-dev doxygen graphviz plantuml file rsync python3.10
     
 
-
 # Install 32-bit libraries for non-64-bit architectures:
 RUN ARCH=$(dpkg --print-architecture) && \
-    if [ "${ARCH}" != "amd64" ] && [ "${ARCH}" != "x86_64" ] && [ "${ARCH}" != "em64t" ] && [ "${ARCH}" != "k8" ] && [ "${ARCH}" != "server" ] && [ "${ARCH}" != "ia32e" ] && [ "${ARCH}" != "amd64.generic" ]; then \
-        apt-get install --no-install-recommends -f -y \
-            libc6-i386 lib32stdc++6 lib32z1; \
-    fi
+if [ "${ARCH}" = "amd64" ] || [ "${ARCH}" = "x86_64" ]; then \
+    apt-get install --no-install-recommends -f -y \
+        libc6-i386 lib32stdc++6 lib32z1; \
+fi
 
 # Delete cached files we don't need anymore:
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
